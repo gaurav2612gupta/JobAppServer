@@ -21,4 +21,8 @@ public class JobService {
         System.out.println("get all jobs job service");
         return repo.getAllJobs();
     }
+
+    public JobPost getJobPost(int jobid) {
+        return repo.getJobPost(jobid);
+    }
 }

@@ -20,9 +20,17 @@ public class JobRepo {
         System.out.println("Get all jobs job repo");
         return jobs;
     }
+    public JobPost getJobPost(int jobid) {
+        for(JobPost jobPost : jobs) {
+            if(jobPost.getJobId() == jobid) return jobPost;
+        }
+        System.out.println("No Job found with the specified jobid in the db");
+        return null;
+    }
 
     public void addJob(JobPost job) {
         jobs.add(job);
     }
+
 
 }

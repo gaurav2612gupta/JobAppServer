@@ -32,5 +32,29 @@ public class JobRepo {
         jobs.add(job);
     }
 
+    public void updateJob(JobPost jobPost) {
+        int jobId = jobPost.getJobId();
+        if(getJobPost(jobId) == null) {
+            System.out.println("No job found with the given id");
+            return;
+        }
+        for(JobPost job: jobs){
+            if(job.getJobId() == jobPost.getJobId()) {
+                job.setJobTitle(jobPost.getJobTitle());
+                job.setJobDescription(jobPost.getJobDescription());
+                job.setExperienceRequired(jobPost.getExperienceRequired());
+                job.setTechStack(jobPost.getTechStack());
+            }
+        }
+    }
+
+    public void deleteJob(int jobId) {
+        if(getJobPost(jobId) == null) {
+            System.out.println("No job found with the given id");
+            return;
+        }
+        jobs.remove(getJobPost(jobId));
+    }
+
 
 }

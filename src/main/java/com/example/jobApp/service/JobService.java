@@ -14,24 +14,27 @@ public class JobService {
     private JobRepo repo;
 
     public void addJob(JobPost jobPost) {
-        repo.addJob(jobPost);
+        repo.save(jobPost);
     }
 
     public List<JobPost> getAllJobs() {
         System.out.println("get all jobs job service");
-        return repo.getAllJobs();
+        return repo.findAll();
     }
 
     public JobPost getJobPost(int jobid) {
-        return repo.getJobPost(jobid);
+        return repo.findById(jobid).orElse(new JobPost());
     }
 
     public void updateJob(JobPost jobPost) {
-        repo.updateJob(jobPost);
+        repo.save(jobPost);
     }
 
     public void deleteJob(int jobid) {
-        repo.deleteJob(jobid);
+        repo.deleteById(jobid);
     }
 
+    public List<JobPost> search(String keyword) {
+        return repo.findByJobTitleContainingOrJobDescriptionContaining(keyword, keyword);
+    }
 }

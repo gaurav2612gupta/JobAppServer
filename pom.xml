@@ -53,6 +53,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>job-app-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
